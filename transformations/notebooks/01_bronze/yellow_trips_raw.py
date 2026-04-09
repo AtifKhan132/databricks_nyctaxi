@@ -6,7 +6,7 @@ from modules.transformations.metadata import current_timestamp
 # COMMAND ----------
 
 #Obtain the year-month for 2 months prior to current month in yyy-MM format
-two_months_ago = get_target_yyyymm(2)
+dates_to_process = get_target_yyyymm(2)
 
 # COMMAND ----------
 
