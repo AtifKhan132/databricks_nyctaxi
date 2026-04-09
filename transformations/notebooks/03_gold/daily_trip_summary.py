@@ -29,4 +29,4 @@ df = df.groupBy(df.tpep_pickup_datetime.cast("date").alias("pickup_date")).\
 
 # COMMAND ----------
 
-spark.write.mode("append").saveAsTable("nyc_taxi.03_gold.daily_trip_summary")
+df.write.mode("append").saveAsTable("nyc_taxi.03_gold.daily_trip_summary")
