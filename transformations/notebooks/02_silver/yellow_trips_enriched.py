@@ -1,9 +1,9 @@
 # Databricks notebook source
-from dateutil.relativedelta import relativedelta
+from modules.utils.date_utils import get_months_start_n_months_ago
 
 # COMMAND ----------
 
-two_months_ago_start = date.today().replace(day=1) - relativedelta(months=2)
+two_months_ago_start = get_months_start_n_months_ago(2)
 
 # COMMAND ----------
 

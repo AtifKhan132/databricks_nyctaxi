@@ -2,12 +2,13 @@
 from datetime import date, datetime, timezone
 from dateutil.relativedelta import relativedelta
 from pyspark.sql.functions import current_timestamp
+from modules.transformations.metadata import add_processed_timestamp
+from modules.utils.date_utils import get_target_yyyymm
 
 # COMMAND ----------
 
 #Obtain the year-month for 2 months prior to current month in yyy-MM format
-two_months_ago = date.today() - relativedelta(months=2)
-dates_to_process = two_months_ago.strftime("%Y-%m")
+dates_to_process = get_target_yyyymm()
 
 # COMMAND ----------
 
@@ -17,7 +18,7 @@ df = spark.read.format("parquet").load(f"/Volumes/nyc_taxi/00_landing/data_sourc
 # COMMAND ----------
 
 #Add a column to capture when the data was processed
-df = df.withColumn("processed_timesatamp", current_timestamp())
+df = add_processed_timestamp(df)
 
 # COMMAND ----------
 
