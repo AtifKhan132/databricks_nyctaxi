@@ -1,7 +1,4 @@
 # Databricks notebook source
-import urllib.request
-import shutil
-import os
 from datetime import date, datetime, timezone
 from dateutil.relativedelta import relativedelta
 from modules.utils.project_root import get_project_root
@@ -13,7 +10,7 @@ project_root = get_project_root()
 # COMMAND ----------
 
 #Obtain the year-month for 2 months prior to current month in yyy-MM format
-two_months_ago = get_target_yyyymm(2)
+dates_to_process = get_target_yyyymm(2)
 
 dir_path = f"/Volumes/nyc_taxi/00_landing/data_sources/nyctaxi_yellow/{dates_to_process}"
 
