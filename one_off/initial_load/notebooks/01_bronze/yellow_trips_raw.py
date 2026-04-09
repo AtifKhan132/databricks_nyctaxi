@@ -7,7 +7,7 @@ df = spark.read.format("parquet").load("/Volumes/nyc_taxi/00_landing/data_source
 
 # COMMAND ----------
 
-df = df.withColumn("processed_timesatamp", current_timestamp())
+df = df.withColumn("processed_timestamp", current_timestamp())
 
 # COMMAND ----------
 

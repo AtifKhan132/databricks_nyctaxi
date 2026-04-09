@@ -1,14 +1,11 @@
 # Databricks notebook source
-from datetime import date, datetime, timezone
-from dateutil.relativedelta import relativedelta
-from pyspark.sql.functions import current_timestamp
 from modules.transformations.metadata import add_processed_timestamp
 from modules.utils.date_utils import get_target_yyyymm
 
 # COMMAND ----------
 
 #Obtain the year-month for 2 months prior to current month in yyy-MM format
-dates_to_process = get_target_yyyymm()
+dates_to_process = get_target_yyyymm(2)
 
 # COMMAND ----------
 

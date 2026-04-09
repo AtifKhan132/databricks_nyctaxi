@@ -41,7 +41,7 @@ df_join_1 = df_trips.join(
         df_trips.congestion_surcharge,
         df_trips.airport_fee,
         df_trips.cbd_congestion_fee,
-        df_trips.processed_timesatamp
+        df_trips.processed_timestamp
     )
 
 # COMMAND ----------
@@ -77,7 +77,7 @@ df_join_2 = df_join_1.join(
         df_join_1.congestion_surcharge,
         df_join_1.airport_fee,
         df_join_1.cbd_congestion_fee,
-        df_join_1.processed_timesatamp
+        df_join_1.processed_timestamp
     )
 
 # COMMAND ----------

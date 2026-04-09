@@ -60,7 +60,7 @@ df = df.select(
     col("congestion_surcharge"),
     col("Airport_fee").alias("airport_fee"),
     col("cbd_congestion_fee").alias("cbd_congestion_fee"),
-    col("processed_timesatamp")    
+    col("processed_timestamp")    
 )
 
 # COMMAND ----------
