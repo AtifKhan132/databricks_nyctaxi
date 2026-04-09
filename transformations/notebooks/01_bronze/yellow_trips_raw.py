@@ -1,7 +1,7 @@
 # Databricks notebook source
 from pyspark.sql.functions import current_timestamp
 from modules.utils.date_utils import get_target_yyyymm
-from modules.transformations.metadata import current_timestamp
+from modules.transformations.metadata import add_processed_timestamp
 
 # COMMAND ----------
 
@@ -16,7 +16,7 @@ df = spark.read.format("parquet").load(f"/Volumes/nyc_taxi/00_landing/data_sourc
 # COMMAND ----------
 
 #Add a column to capture when the data was processed
-df = current_timestamp(df)
+df = add_processed_timestamp(df)
 
 # COMMAND ----------
 
