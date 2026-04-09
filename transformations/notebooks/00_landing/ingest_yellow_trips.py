@@ -4,6 +4,10 @@ import shutil
 import os
 from datetime import date, datetime, timezone
 from dateutil.relativedelta import relativedelta
+from modules.utils.project_root import get_project_root
+from modules.data_loader.file_downloader import download_file
+
+project_root = get_project_root()
 
 # COMMAND ----------
 
@@ -13,7 +17,7 @@ dates_to_process = two_months_ago.strftime("%Y-%m")
 
 dir_path = f"/Volumes/nyc_taxi/00_landing/data_sources/nyctaxi_yellow/{dates_to_process}"
 
-os.makedirs(dir_path, exist_ok=True)
+# os.makedirs(dir_path, exist_ok=True)
 
 local_path = f"{dir_path}/yellow_tripdata_{dates_to_process}.parquet"
 
@@ -28,10 +32,8 @@ except:
     try:
         url = f"https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_{dates_to_process}.parquet"
 
-        response = urllib.request.urlopen(url)  
-
-        with open(local_path, 'wb') as out_file:
-            shutil.copyfileobj(response, out_file)
+        # dowload file
+        download_file(url, dir_path, local_path)
 
         #set continue_downstream to yes if the file was loaded successfully
         dbutils.jobs.taskValues.set(key="continue_downstream", value="yes")

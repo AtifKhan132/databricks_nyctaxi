@@ -1,13 +1,12 @@
 # Databricks notebook source
 from pyspark.sql.functions import col, when, timestamp_diff
-from datetime import date
-from dateutil.relativedelta import relativedelta
+from modules.utils.date_utils import get_months_start_n_months_ago
 
 # COMMAND ----------
 
-two_months_ago_start = date.today().replace(day=1) - relativedelta(months=2)
+two_months_ago_start = get_months_start_n_months_ago()
 
-one_month_ago_start = date.today().replace(day=1) - relativedelta(months=1)
+one_month_ago_start = get_months_start_n_months_ago(1)
 
 # COMMAND ----------
 
